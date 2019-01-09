@@ -18,9 +18,10 @@ public class Window extends JFrame {
     public Window() {
         super("Snake");
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel emptyLabel = new JLabel();
-        emptyLabel.setPreferredSize(new Dimension(500,400));
-        super.getContentPane().add(emptyLabel, BorderLayout.CENTER);
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.BLACK);
+        panel.setPreferredSize(new Dimension(500, 400));
+        super.getContentPane().add(panel);
         super.pack();
         super.setVisible(true);
     }
