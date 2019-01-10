@@ -17,16 +17,23 @@ import java.awt.*;
  */
 
 public class Window extends JFrame {
+    private Snake snake;
+    private MyCanvas canvas;
+
     public Window(Snake snake, int width, int height) {
         super("Snake");
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        MyCanvas canvas = new MyCanvas(snake);
+        canvas = new MyCanvas(snake);
         canvas.setBackground(Color.BLACK);
         canvas.setPreferredSize(new Dimension(width , height));
 
         super.getContentPane().add(canvas);
         super.pack();
         super.setVisible(true);
+    }
+
+    public void update() {
+        canvas.repaint();
     }
 }
