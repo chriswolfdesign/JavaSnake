@@ -1,7 +1,6 @@
 package ui;
 
 import model.Snake;
-import model.SnakePiece;
 
 import javax.swing.*;
 import java.awt.*;
