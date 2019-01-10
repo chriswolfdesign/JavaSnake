@@ -1,5 +1,7 @@
 package ui;
 
+import model.Snake;
+
 /**
  * Game.java
  *
@@ -12,6 +14,9 @@ package ui;
  */
 public class Game {
     public static void main(String[] args) {
-        Window window = new Window();
+        final int WIDTH = 500;
+        final int HEIGHT = 400;
+        Snake snake = new Snake(WIDTH / 2, HEIGHT / 2);
+        Window window = new Window(snake, WIDTH, HEIGHT);
     }
 }
