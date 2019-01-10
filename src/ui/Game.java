@@ -22,6 +22,7 @@ public class Game {
         Window window = new Window(snake, WIDTH, HEIGHT);
 
         while(true) {
+            // wait 0.1 seconds to make game playable
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
             } catch (InterruptedException ie) {
