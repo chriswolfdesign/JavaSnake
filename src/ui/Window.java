@@ -27,10 +27,12 @@ public class Window extends JFrame {
         canvas = new MyCanvas(snake);
         canvas.setBackground(Color.BLACK);
         canvas.setPreferredSize(new Dimension(width , height));
+        canvas.addKeyListener(new ArrowKeyListener(snake));
 
         super.getContentPane().add(canvas);
         super.pack();
         super.setVisible(true);
+        this.requestFocus();
     }
 
     public void update() {
