@@ -1,6 +1,7 @@
 package test;
 
 import model.Snake;
+import model.Direction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,6 +50,7 @@ public class SnakeTest {
     public void testGoDown() {
         assertEquals(100, s.getPieces().get(0).getX(), 0.0);
         assertEquals(200, s.getPieces().get(0).getY(), 0.0);
+        s.goRight();
         s.goDown();
         s.move();
         assertEquals(100, s.getPieces().get(0).getX(), 0.0);
@@ -73,5 +75,38 @@ public class SnakeTest {
         s.move();
         assertEquals(90, s.getPieces().get(0).getX(), 0.0);
         assertEquals(200, s.getPieces().get(0).getY(), 0.0);
+    }
+
+    @Test
+    public void testGoingFromUpToDown() {
+        s.goUp();
+        assertEquals(s.getDirection(), Direction.UP);
+        s.goDown();
+        assertEquals(s.getDirection(), Direction.UP);
+    }
+
+    @Test
+    public void testGoingFromDownToUp() {
+        s.goRight();
+        s.goDown();
+        assertEquals(s.getDirection(), Direction.DOWN);
+        s.goUp();
+        assertEquals(s.getDirection(), Direction.DOWN);
+    }
+
+    @Test
+    public void testGoingFromLeftToRight() {
+        s.goLeft();
+        assertEquals(s.getDirection(), Direction.LEFT);
+        s.goRight();
+        assertEquals(s.getDirection(), Direction.LEFT);
+    }
+
+    @Test
+    public void testGoingFromRightToLeft() {
+        s.goRight();
+        assertEquals(s.getDirection(), Direction.RIGHT);
+        s.goLeft();
+        assertEquals(s.getDirection(), Direction.RIGHT);
     }
 }

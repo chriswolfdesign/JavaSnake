@@ -42,6 +42,15 @@ public class Snake {
     }
 
     /**
+     * Getter for direction field
+     *
+     * @return {Direction} -- the direction the snake is currently going
+     */
+    public Direction getDirection() {
+        return direction;
+    }
+
+    /**
      * Returns the size of our snake (length of the piece's list)
      *
      * @return {int} -- the size of our snake
