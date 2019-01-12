@@ -17,9 +17,11 @@ public class Snake {
     private ArrayList<SnakePiece> pieces;
     private int dx;
     private int dy;
+    private Direction direction;
 
     public Snake(int x, int y) {
         pieces = new ArrayList<>();
+        direction = Direction.UP; 
 
         for (int i = 0; i < 3; i++) {
             pieces.add(new SnakePiece(x, y + SnakePiece.getPieceSize() * i));
@@ -78,31 +80,43 @@ public class Snake {
      * Sets the dx and dy values such that the snake will be moving up.
      */
     public void goUp() {
-        this.dx = 0;
-        this.dy = -1 * SnakePiece.getPieceSize();
+        if (direction != Direction.DOWN) {
+            direction = Direction.UP;
+            this.dx = 0;
+            this.dy = -1 * SnakePiece.getPieceSize();
+        }
     }
 
     /**
      * Sets the dx and dy values such that the snake will be moving down.
      */
     public void goDown() {
-        this.dx = 0;
-        this.dy = SnakePiece.getPieceSize();
+        if (direction != Direction.UP) {
+            direction = Direction.DOWN;
+            this.dx = 0;
+            this.dy = SnakePiece.getPieceSize();
+        }
     }
 
     /**
      * Sets the dx and dy values such that the snake will be moving right.
      */
     public void goRight() {
-        this.dx = SnakePiece.getPieceSize();
-        this.dy = 0;
+        if (direction != Direction.LEFT) {
+            direction = Direction.RIGHT;
+            this.dx = SnakePiece.getPieceSize();
+            this.dy = 0;
+        }
     }
 
     /**
      * Sets the dx and dy values such that the snake will be moving left.
      */
     public void goLeft() {
-        this.dx = -1 * SnakePiece.getPieceSize();
-        this.dy = 0;
+        if (direction != Direction.RIGHT) {
+            direction = Direction.LEFT;
+            this.dx = -1 * SnakePiece.getPieceSize();
+            this.dy = 0;
+        }
     }
 }
