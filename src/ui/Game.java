@@ -3,6 +3,7 @@ package ui;
 import model.Snake;
 
 import java.util.concurrent.TimeUnit;
+import javax.swing.JOptionPane;
 
 /**
  * Game.java
@@ -32,6 +33,7 @@ public class Game {
             window.update();
 
             if(snake.outOfBounds()) {
+                JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
                 break;
             }
         }
