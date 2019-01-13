@@ -15,16 +15,24 @@ import java.util.ArrayList;
 
 public class Snake {
     private ArrayList<SnakePiece> pieces;
+    private int width;
+    private int height;
     private int dx;
     private int dy;
     private Direction direction;
 
-    public Snake(int x, int y) {
+    public Snake(int width, int height) {
+        this.width = width;
+        this.height = height;
+
+        int firstX = width / 2;
+        int firstY = height / 2;
+
         pieces = new ArrayList<>();
         direction = Direction.UP; 
 
         for (int i = 0; i < 3; i++) {
-            pieces.add(new SnakePiece(x, y + SnakePiece.getPieceSize() * i));
+            pieces.add(new SnakePiece(firstX, firstY + SnakePiece.getPieceSize() * i));
         }
 
         // Begin with the snake moving up
@@ -127,5 +135,15 @@ public class Snake {
             this.dx = -1 * SnakePiece.getPieceSize();
             this.dy = 0;
         }
+    }
+
+    /**
+     * Determines whether or not the snake is out of bounds
+     *
+     * @return {boolean} -- true if the snake is out of bounds, false if it is not
+     */
+    public boolean outOfBounds() {
+        return (pieces.get(0).getX() < 0) || (pieces.get(0).getX() > width) ||
+               (pieces.get(0).getY() < 0) || (pieces.get(0).getY() > height);
     }
 }

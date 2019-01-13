@@ -6,13 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class SnakeTest {
     Snake s;
 
     @Before
     public void setup() {
-        s = new Snake(100, 200);
+        s = new Snake(200, 400);
     }
 
     @Test
@@ -108,5 +110,40 @@ public class SnakeTest {
         assertEquals(s.getDirection(), Direction.RIGHT);
         s.goLeft();
         assertEquals(s.getDirection(), Direction.RIGHT);
+    }
+
+    @Test
+    public void testOutOfBounds_IsInBounds() {
+        s.getPieces().get(0).setX(50);
+        s.getPieces().get(0).setY(50);
+        assertFalse(s.outOfBounds());
+    }
+
+    @Test
+    public void testOutOfBounds_IsAboveFrame() {
+        s.getPieces().get(0).setX(50);
+        s.getPieces().get(0).setY(-50);
+        assertTrue(s.outOfBounds());
+    }
+
+    @Test
+    public void testOutOfBounds_IsBelowFrame() {
+        s.getPieces().get(0).setX(50);
+        s.getPieces().get(0).setY(450);
+        assertTrue(s.outOfBounds());
+    }
+
+    @Test
+    public void testOutOfBounds_IsLeftOfFrame() {
+        s.getPieces().get(0).setX(-50);
+        s.getPieces().get(0).setY(50);
+        assertTrue(s.outOfBounds());
+    }
+
+    @Test
+    public void testOutOfBounds_IsRightOfFrame() {
+        s.getPieces().get(0).setX(250);
+        s.getPieces().get(0).setY(50);
+        assertTrue(s.outOfBounds());
     }
 }
