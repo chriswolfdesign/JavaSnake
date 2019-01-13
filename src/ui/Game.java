@@ -34,7 +34,7 @@ public class Game {
 
             if(snake.outOfBounds()) {
                 JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
-                break;
+                System.exit(0);
             }
         }
     }
