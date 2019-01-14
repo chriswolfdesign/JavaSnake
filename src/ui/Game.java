@@ -1,6 +1,7 @@
 package ui;
 
 import model.Snake;
+import model.Apple;
 
 import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
@@ -20,7 +21,8 @@ public class Game {
         final int WIDTH = 500;
         final int HEIGHT = 400;
         Snake snake = new Snake(WIDTH, HEIGHT);
-        Window window = new Window(snake, WIDTH, HEIGHT);
+        Apple apple = new Apple(WIDTH, HEIGHT);
+        Window window = new Window(snake, apple, WIDTH, HEIGHT);
 
         while(true) {
             // wait 0.1 seconds to make game playable

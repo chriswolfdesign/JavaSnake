@@ -1,6 +1,7 @@
 package ui;
 
 import model.Snake;
+import model.Apple;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,13 +19,17 @@ import java.awt.*;
 
 public class Window extends JFrame {
     private Snake snake;
+    private Apple apple;
     private MyCanvas canvas;
 
-    public Window(Snake snake, int width, int height) {
+    public Window(Snake snake, Apple apple, int width, int height) {
         super("Snake");
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        canvas = new MyCanvas(snake);
+        this.snake = snake;
+        this.apple = apple;
+
+        canvas = new MyCanvas(snake, apple);
         canvas.setBackground(Color.BLACK);
         canvas.setPreferredSize(new Dimension(width , height));
         canvas.addKeyListener(new ArrowKeyListener(snake));
@@ -35,6 +40,28 @@ public class Window extends JFrame {
         this.requestFocus();
     }
 
+    /**
+     * Getter for our apple
+     *
+     * @return {Apple} -- the apple in our game
+     */
+    public Apple getApple() {
+        return canvas.getApple();
+    }
+
+    /**
+     * Setter for out apple
+     *
+     * @param {Apple} apple -- the new apple for our game
+     */
+    public void setApple(Apple apple) {
+        this.apple = apple;
+        this.canvas.setApple(apple);
+    }
+
+    /**
+     * Forces the canvas to repaint the snake and apple onto the screen.
+     */
     public void update() {
         canvas.repaint();
     }
