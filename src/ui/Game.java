@@ -24,12 +24,6 @@ public class Game {
 
         Window window = new Window(snake, WIDTH, HEIGHT);
 
-        // If the snake has gone out of bounds, game over
-        if(snake.outOfBounds()) {
-            JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
-            System.exit(0);
-        }
-
         while(true) {
             // wait 0.1 seconds to make game playable
             try {
@@ -40,6 +34,11 @@ public class Game {
             snake.move();
             window.update();
 
+            // If the snake has gone out of bounds, game over
+            if(snake.outOfBounds()) {
+                JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
+                System.exit(0);
+            }
         }
     }
 }

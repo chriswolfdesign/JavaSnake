@@ -68,6 +68,25 @@ public class Window extends JFrame {
     }
 
     /**
+     * Getter for our snake
+     *
+     * @return {Snake} -- the snake it our game
+     */
+    public Snake getSnake() {
+        return this.snake;
+    }
+
+    /**
+     * Setter for our snake
+     *
+     * @param {Snake} snake -- the new snake for our game
+     */
+    public void setSnake(Snake snake) {
+        this.snake = snake;
+        this.canvas.setSnake(snake);
+    }
+
+    /**
      * Forces the canvas to repaint the snake and apple onto the screen.
      */
     public void update() {
