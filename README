@@ -9,6 +9,9 @@ repository.
 
     ~ Chris
 
+BUG:
+    - Game Over no longer occurs when snake goes off the screen
+
 GitHub: www.github.com/chriswolfdesign
 E-mail: chriswolfdesign@gmail.com
 Phone: (919)770-2878

@@ -21,13 +21,21 @@ public class Window extends JFrame {
     private Snake snake;
     private Apple apple;
     private MyCanvas canvas;
+    private int width;
+    private int height;
 
-    public Window(Snake snake, Apple apple, int width, int height) {
+    public Window(Snake snake, int width, int height) {
         super("Snake");
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        this.width = width;
+        this.height = height;
         this.snake = snake;
-        this.apple = apple;
+
+        // Do not allow apple to spawn on top of the snake
+        do {
+            this.apple = new Apple(width, height);
+        } while(snake.isTouchingApple(apple));
 
         canvas = new MyCanvas(snake, apple);
         canvas.setBackground(Color.BLACK);
@@ -63,6 +71,15 @@ public class Window extends JFrame {
      * Forces the canvas to repaint the snake and apple onto the screen.
      */
     public void update() {
+        if(snake.isTouchingApple(apple)) {
+            snake.addPiece();
+
+            // Again, do not allow apple to spawn on top of the snake
+            do {
+                this.setApple(new Apple(width, height));
+            } while(snake.isTouchingApple(apple));
+        }
+
         canvas.repaint();
     }
 }

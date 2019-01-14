@@ -146,4 +146,21 @@ public class Snake {
         return (pieces.get(0).getX() < 0) || (pieces.get(0).getX() > width) ||
                (pieces.get(0).getY() < 0) || (pieces.get(0).getY() > height);
     }
+
+    /**
+     * Determines whether or not the snake is currently touching an apple
+     *
+     * @param {Apple} apple -- the apple we are testing for collision
+     *
+     * @return {boolean} -- true if the snake is touching the apple, false otherwise
+     */
+    public boolean isTouchingApple(Apple apple) {
+        for(SnakePiece piece : pieces) {
+            if(piece.getX() == apple.getX() && piece.getY() == apple.getY()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

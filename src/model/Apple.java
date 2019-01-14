@@ -40,4 +40,24 @@ public class Apple {
     public int getY() {
         return this.y;
     }
+
+    /**
+     * Setter for our x-value
+     * ONLY USED FOR DEBUGGING
+     *
+     * @param {int} x -- our new x-value
+     */
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    /**
+     * Setter for our y-value
+     * ONLY USED FOR DEBUGGING
+     *
+     * @param {int} y -- our new y-value
+     */
+    public void setY(int y) {
+        this.y = y;
+    }
 }

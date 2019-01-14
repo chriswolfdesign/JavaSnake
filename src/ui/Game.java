@@ -21,8 +21,14 @@ public class Game {
         final int WIDTH = 500;
         final int HEIGHT = 400;
         Snake snake = new Snake(WIDTH, HEIGHT);
-        Apple apple = new Apple(WIDTH, HEIGHT);
-        Window window = new Window(snake, apple, WIDTH, HEIGHT);
+
+        Window window = new Window(snake, WIDTH, HEIGHT);
+
+        // If the snake has gone out of bounds, game over
+        if(snake.outOfBounds()) {
+            JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
+            System.exit(0);
+        }
 
         while(true) {
             // wait 0.1 seconds to make game playable
@@ -34,10 +40,6 @@ public class Game {
             snake.move();
             window.update();
 
-            if(snake.outOfBounds()) {
-                JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
-                System.exit(0);
-            }
         }
     }
 }

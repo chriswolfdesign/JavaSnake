@@ -2,6 +2,8 @@ package test;
 
 import model.Snake;
 import model.Direction;
+import model.Apple;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,10 +13,12 @@ import static org.junit.Assert.assertFalse;
 
 public class SnakeTest {
     Snake s;
+    Apple a;
 
     @Before
     public void setup() {
         s = new Snake(200, 400);
+        a = new Apple(200, 400);
     }
 
     @Test
@@ -145,5 +149,40 @@ public class SnakeTest {
         s.getPieces().get(0).setX(250);
         s.getPieces().get(0).setY(50);
         assertTrue(s.outOfBounds());
+    }
+
+    @Test
+    public void testIsTouchingApple_isTouching() {
+        a.setX(100);
+        a.setY(200);
+        assertTrue(s.isTouchingApple(a));
+    }
+
+    @Test
+    public void testIsTouchingApple_isBelowApple() {
+        a.setX(100);
+        a.setY(190);
+        assertFalse(s.isTouchingApple(a));
+    }
+
+    @Test
+    public void testIsTouchingApple_isAboveApple() {
+        a.setX(100);
+        a.setY(250);
+        assertFalse(s.isTouchingApple(a));
+    }
+
+    @Test
+    public void testIsTouchingApple_isRightOfApple() {
+        a.setX(90);
+        a.setY(200);
+        assertFalse(s.isTouchingApple(a));
+    }
+
+    @Test
+    public void testIsTouchingApple_isLeftOfApple() {
+        a.setX(110);
+        a.setY(200);
+        assertFalse(s.isTouchingApple(a));
     }
 }
