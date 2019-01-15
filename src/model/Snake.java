@@ -72,9 +72,20 @@ public class Snake {
      * (placing it below the most recent piece)
      */
     public void addPiece() {
-        this.pieces.add(new SnakePiece(pieces.get(this.size() - 1).getX(),
-                pieces.get(this.size() - 1).getY() +
-                        SnakePiece.getPieceSize()));
+
+        // Use direction statement to avoid snake biting itself when the
+        // new piece is generated.
+        if(direction == Direction.UP) {
+            this.pieces.add(new SnakePiece(pieces.get(this.size() - 1).getX(),
+                    pieces.get(this.size() - 1).getY() +
+                            SnakePiece.getPieceSize()));
+        }
+
+        else {
+            this.pieces.add(new SnakePiece(pieces.get(this.size() - 1).getX(),
+                    pieces.get(this.size() - 1).getY() -
+                            SnakePiece.getPieceSize()));
+        }
     }
 
     /**

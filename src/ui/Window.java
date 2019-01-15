@@ -24,18 +24,14 @@ public class Window extends JFrame {
     private int width;
     private int height;
 
-    public Window(Snake snake, int width, int height) {
-        super("Snake");
+    public Window(Snake snake, Apple apple, int width, int height) {
+        super("Snake -- Score: 0");
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         this.width = width;
         this.height = height;
         this.snake = snake;
-
-        // Do not allow apple to spawn on top of the snake
-        do {
-            this.apple = new Apple(width, height);
-        } while(snake.isTouchingApple(apple));
+        this.apple = apple;
 
         canvas = new MyCanvas(snake, apple);
         canvas.setBackground(Color.BLACK);
