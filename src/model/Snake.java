@@ -163,4 +163,21 @@ public class Snake {
 
         return false;
     }
+
+    /**
+     * Determines whether or not the head of the snake is overlapping with
+     * another piece.
+     *
+     * @return {boolean} -- true if the snake has bit itself, false otherwise
+     */
+    public boolean bitItself() {
+        for(int i = 1; i < pieces.size(); i++) {
+            if(pieces.get(0).getX() == pieces.get(i).getX() &&
+               pieces.get(0).getY() == pieces.get(i).getY()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

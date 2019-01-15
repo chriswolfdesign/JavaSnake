@@ -36,7 +36,13 @@ public class Game {
 
             // If the snake has gone out of bounds, game over
             if(snake.outOfBounds()) {
-                JOptionPane.showMessageDialog(window, "You went out of bounds :_(");
+                JOptionPane.showMessageDialog(window, "GAME OVER -- You went out of bounds :_(");
+                System.exit(0);
+            }
+
+            // If the snake bit itself, game over
+            if(snake.bitItself()) {
+                JOptionPane.showMessageDialog(window, "GAME OVER -- The snake bit itself :_(");
                 System.exit(0);
             }
         }
