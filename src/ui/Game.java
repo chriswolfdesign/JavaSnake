@@ -53,7 +53,6 @@ public class Game {
                 window.setApple(apple);
 
                 score++;
-                System.out.println(score);
                 window.setTitle("Snake -- Score: " + score);
             }
 
